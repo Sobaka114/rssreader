@@ -2,6 +2,7 @@ package com.example.alexandra.volushkovaalexandra;
 
 import com.example.alexandra.volushkovaalexandra.data.model.FeedItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,5 +11,7 @@ import java.util.List;
  */
 
 interface FeedListView {
-    void showFeedList(List<FeedItem> conferences);
+    void showFeedList(ArrayList<FeedItem> conferences);
+
+    void disableProgressBar();
 }

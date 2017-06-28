@@ -12,8 +12,8 @@ import io.reactivex.subjects.PublishSubject;
  */
 
 public class FeedItemRepository implements IFeedItemRepository {
-    private List<FeedItem> feedItems;
-    private PublishSubject<List<FeedItem>> feedItemsPublish;
+    private ArrayList<FeedItem> feedItems;
+    private PublishSubject<ArrayList<FeedItem>> feedItemsPublish;
 
     public FeedItemRepository() {
         feedItems = new ArrayList<>();
@@ -21,7 +21,7 @@ public class FeedItemRepository implements IFeedItemRepository {
     }
 
     @Override
-    public Observable<List<FeedItem>> getFeedItems() {
+    public Observable<ArrayList<FeedItem>> getFeedItems() {
         return feedItemsPublish;
     }
 

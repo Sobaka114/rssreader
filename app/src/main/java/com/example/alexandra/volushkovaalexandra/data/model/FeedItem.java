@@ -1,13 +1,15 @@
 package com.example.alexandra.volushkovaalexandra.data.model;
 
 import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * data model for news item
  * Created by Alexandra on 09.06.2017.
  */
 
-public class FeedItem {
+public class FeedItem implements Parcelable {
     private final Bitmap bmp;
     private String title;
     private String source;
@@ -23,6 +25,27 @@ public class FeedItem {
         this.imageUrl = imageLink;
         this.bmp = bmp;
     }
+
+    protected FeedItem(Parcel in) {
+        bmp = in.readParcelable(Bitmap.class.getClassLoader());
+        title = in.readString();
+        source = in.readString();
+        imageUrl = in.readString();
+        description = in.readString();
+        itemUrl = in.readString();
+    }
+
+    public static final Creator<FeedItem> CREATOR = new Creator<FeedItem>() {
+        @Override
+        public FeedItem createFromParcel(Parcel in) {
+            return new FeedItem(in);
+        }
+
+        @Override
+        public FeedItem[] newArray(int size) {
+            return new FeedItem[size];
+        }
+    };
 
     public String getTitle() {
         return title;
@@ -66,5 +89,20 @@ public class FeedItem {
 
     public Bitmap getBmp() {
         return bmp;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(bmp, flags);
+        dest.writeString(title);
+        dest.writeString(source);
+        dest.writeString(imageUrl);
+        dest.writeString(description);
+        dest.writeString(itemUrl);
     }
 }

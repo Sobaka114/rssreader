@@ -4,6 +4,7 @@ import com.example.alexandra.volushkovaalexandra.app.schedulers.BaseSchedulerPro
 import com.example.alexandra.volushkovaalexandra.data.model.FeedItem;
 import com.example.alexandra.volushkovaalexandra.data.model.IFeedItemRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -53,8 +54,9 @@ class ItemListPresenter {
         mSubscriptions.add(subscription);
     }
 
-    public void processItemList(List<FeedItem> items) {
+    public void processItemList(ArrayList<FeedItem> items) {
         this.feedListView.showFeedList(items);
+        this.feedListView.disableProgressBar();
     }
 
     public void unsubscribe() {

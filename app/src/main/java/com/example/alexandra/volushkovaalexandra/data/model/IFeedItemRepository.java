@@ -1,5 +1,6 @@
 package com.example.alexandra.volushkovaalexandra.data.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -10,7 +11,7 @@ import io.reactivex.Observable;
  */
 
 public interface IFeedItemRepository {
-    Observable<List<FeedItem>> getFeedItems();
+    Observable<ArrayList<FeedItem>> getFeedItems();
 
     void replaceFeeds(List<FeedItem> parse);
 }
